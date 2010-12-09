@@ -28,7 +28,11 @@ i = 0
 channel = 100
 
 def bookmark
-  app('System Events').keystroke("d", :using => :command_down)
+  if app('Google Chrome.app').frontmost.get
+    app('System Events').keystroke("d", :using => :command_down)
+  else
+    app('System Events').keystroke("t", :using => :shift_down)
+  end
 end
 
 sensors = Array.new(4, 980) # センサーの番号と値を入れる配列
